@@ -1,12 +1,13 @@
 package Exercises;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.HashMap;
-
+import java.util.LinkedHashSet;
 
 public class Colecciones {
-    ArrayList<String> cars ;
+    ArrayList<String> cars;
     String[] bikes;
     Set<String> bicicles;
     HashMap<Integer, String> transport;
@@ -38,10 +39,27 @@ public class Colecciones {
         this.bicicles.add("AURUMANIA CRYSTAL EDITION GOLD BIKE");
     }
 
-    public HashMap<Integer, String>  obtenerHash(){
-        int length = cars.size() + bikes.length + bicicles.size();// obtener tamaño
-        int count =1;
-        //this.transport.forEach((key, value) -> System.out.println(key + " " + value)); //imprimir para pruebas
+    public HashMap<Integer, String> obtenerHash(){
+
+        LinkedHashSet<String> elementosUnicos = new LinkedHashSet<>();
+
+        elementosUnicos.addAll(cars);
+
+        for (String bike : bikes) {
+            if (bike != null && !bike.trim().isEmpty()) {
+                elementosUnicos.add(bike);
+            }
+        }
+
+        elementosUnicos.addAll(bicicles);
+
+        this.transport.clear();
+        int count = 1;
+        for (String elemento : elementosUnicos) {
+            this.transport.put(count, elemento);
+            count++;
+        }
+
         return this.transport;
     }
 }
