@@ -10,7 +10,7 @@ public class Colecciones {
     ArrayList<String> cars;
     String[] bikes;
     Set<String> bicicles;
-    HashMap<Integer, String> transport;
+    public HashMap<Integer, String> transport;
 
     public Colecciones(){
         this.cars = new ArrayList<String>();
